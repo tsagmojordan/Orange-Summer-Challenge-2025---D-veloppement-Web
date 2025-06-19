@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employe</title>
+    <link rel="stylesheet" href="../styles/employeStyle.css">
+<body>
+<div class="container">
+    <div class="title">
+        <img src="../images/orange.svg" alt="logo">
+        <h3>Ajouter un employé</h3>
+    </div>
+    <div class="error"></div>
+    <form method="post">
+        <div class="form-input">
+            <label for="nom">Nom:</label>
+            <input type="text" name="nom" id="nom" required>
+        </div>
+        <div class="form-input">
+            <label for="prenom">Prénom:</label>
+            <input type="text" name="prenom" id="prenom" required>
+        </div>
+        <div class="form-input">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="form-input">
+            <label for="fonction">Fonction:</label>
+            <input type="text" name="fonction" id="fonction" required>
+        </div>
+        <div class="btn">
+            <button onclick="ajouterEmploye()" class="submit">ajouter</button>
+            <button onclick="annuler()" class="cancel">annuler</button>
+        </div>
+
+
+
+    </form>
+    <p>&copy;Orange Summer Challenge 2025 </p>
+</div>
+<script src="../script.js"></script>
+</body>
+</html>
