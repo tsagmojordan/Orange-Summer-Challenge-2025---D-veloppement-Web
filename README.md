@@ -1,36 +1,37 @@
-# Annuaire des Employés Orange
+# Annuaire des Employés
 
-Application web front-end pour gérer un annuaire interne des employés d'un service Orange.
+Application web simple pour gérer un annuaire d'employés.
+
+## Structure des fichiers
+
+```
+test-orange/
+├── index.html          # Page principale (liste des employés)
+├── script.js           # Logique JavaScript principale
+├── style.css           # Feuille de style principale
+├── pages/
+│   └── add.html        # Page d'ajout d'un employé
+└── README.md           # Documentation
+```
 
 ## Fonctionnalités
 
-- **Ajout d'employés** via formulaire avec validation :
-  - Champs obligatoires : Nom, Prénom, Email, Poste
-  - Validation de l'email
-- **Affichage dynamique** de la liste des employés
-- **Suppression d'employés** en un clic
-- **Persistance des données** via localStorage
-- **Interface responsive** adaptée mobile et desktop
+- Page d'ajout d'employé avec formulaire
+- Page d'affichage de la liste des employés
+- Stockage local des données (localStorage)
+- Bouton de suppression des employés
 
-## Technologies
+## Technologies utilisées
 
 - HTML5
-- CSS3 
-- JavaScript 
+- CSS3
+- JavaScript Vanilla
 
-## Structure
+## Comment utiliser
 
-- `index.html` : Page principale avec formulaire et liste
-- `script.js` : Logique métier complète
-- `style.css` : Styles personnalisés
-
-## Installation
-
-1. Cloner le dépôt
-2. Ouvrir `index.html` dans un navigateur moderne
-
-## Utilisation
-
+1. Ouvrir `index.html` dans un navigateur
+2. Cliquer sur "Ajouter employé" pour accéder au formulaire
+3. Remplir et soumettre le formulaire
 1. Remplir le formulaire d'ajout
 2. Valider pour ajouter à la liste
 3. Cliquer sur "Supprimer" pour retirer un employé

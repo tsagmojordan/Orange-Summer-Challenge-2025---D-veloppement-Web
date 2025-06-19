@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un employé</title>
+    <title>Ajouter Employé</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -11,28 +11,30 @@
         <h1>Ajouter un employé</h1>
         
         <form id="form-employe">
-            <div class="form-group">
-                <label for="nom">Nom*</label>
+            <div>
+                <label>Nom:</label>
                 <input type="text" id="nom" required>
             </div>
-            <div class="form-group">
-                <label for="prenom">Prénom*</label>
+            
+            <div>
+                <label>Prénom:</label>
                 <input type="text" id="prenom" required>
             </div>
-            <div class="form-group">
-                <label for="email">Email*</label>
+            
+            <div>
+                <label>Email:</label>
                 <input type="email" id="email" required>
             </div>
-            <div class="form-group">
-                <label for="poste">Poste/Fonction*</label>
+            
+            <div>
+                <label>Poste:</label>
                 <input type="text" id="poste" required>
             </div>
+            
             <button type="submit">Enregistrer</button>
         </form>
-
-        <div class="navigation">
-            <a href="../index.html" class="btn">Voir la liste</a>
-        </div>
+        
+        <a href="../index.html" class="btn">Voir la liste</a>
     </div>
 
     <script src="../script.js"></script>
