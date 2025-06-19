@@ -1,48 +1,76 @@
-
-let nom;
-let prenom;
-let email;
-let fonction;
-
-function ajouterEmploye(){
-    nom=document.getElementById("nom").value;
-    prenom=document.getElementById("prenom").value;
-    email=document.getElementById("email").value;
-    fonction=document.getElementById("fonction").value;
-    console.log(nom,prenom,email,fonction);
-    const employe={nom,prenom,email,fonction};
-    const employes=JSON.parse(localStorage.getItem("employes"));
-    console.log(employes);
-    employes.push(employe);
-    sauvegarderEmploye(employes);
-
-
-
-
-}
-
-function afficherEmploye(){
-    const tbody=document.getElementById("tbody");
-    const employes=JSON.parse(localStorage.getItem("employes"));
-    for (let i = 0; i <employes ; i++) {
-        tbody.innerHTML+=employes[i].nom;
-        console.log(employes[i].nom);
-        tbody.innerHTML+=employes[i].prenom;
-        console.log(employes[i].prenom);
-        tbody.innerHTML+=employes[i].email;
-        tbody.innerHTML+=employes[i].fonction;
+class AnnuaireEmployes {
+    constructor() {
+        this.employes = JSON.parse(localStorage.getItem('employes')) || [];
+        this.form = document.getElementById('form-employe');
+        this.init();
     }
 
-}
-function supprimerEmployer(nom){
+    init() {
+        this.form.addEventListener('submit', (e) => this.ajouterEmploye(e));
+        this.afficherEmployes();
+    }
 
+    ajouterEmploye(e) {
+        e.preventDefault();
+        
+        const nom = document.getElementById('nom').value.trim();
+        const prenom = document.getElementById('prenom').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const poste = document.getElementById('poste').value.trim();
+
+        if (!this.validerFormulaire(nom, prenom, email, poste)) return;
+
+        const employe = { nom, prenom, email, poste };
+        this.employes.push(employe);
+        this.sauvegarder();
+        this.afficherEmployes();
+        this.form.reset();
+    }
+
+    validerFormulaire(nom, prenom, email, poste) {
+        if (!nom || !prenom || !email || !poste) {
+            alert('Tous les champs sont obligatoires');
+            return false;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            alert('Veuillez entrer un email valide');
+            return false;
+        }
+
+        return true;
+    }
+
+    supprimerEmploye(index) {
+        if (confirm('Voulez-vous vraiment supprimer cet employé ?')) {
+            this.employes.splice(index, 1);
+            this.sauvegarder();
+            this.afficherEmployes();
+        }
+    }
+
+    afficherEmployes() {
+        const tbody = document.getElementById('employes-body');
+        tbody.innerHTML = this.employes
+            .map((emp, index) => `
+                <tr>
+                    <td>${emp.nom}</td>
+                    <td>${emp.prenom}</td>
+                    <td><a href="mailto:${emp.email}">${emp.email}</a></td>
+                    <td>${emp.poste}</td>
+                    <td>
+                        <button onclick="annuaire.supprimerEmploye(${index})" class="btn-supprimer">
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+            `)
+            .join('');
+    }
+
+    sauvegarder() {
+        localStorage.setItem('employes', JSON.stringify(this.employes));
+    }
 }
 
-function sauvegarderEmploye(employes){
-    const employeSave=localStorage.setItem("employes",JSON.stringify(employes));
-}
-
-function annuler(){
-    window.location.href="../index.html";
-}
-afficherEmploye();
+const annuaire = new AnnuaireEmployes();

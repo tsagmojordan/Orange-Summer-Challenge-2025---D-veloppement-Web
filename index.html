@@ -2,44 +2,54 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Annuaire Orange</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <img src="images/orange.svg" alt="logo">
-    <div class="title">
-        <h1>Test Technique Développement Web</h1>
-        <h3>Gestion des employés</h3>
-    </div>
-    <button><a href="pages/addEmploye.html"> ajouter un employé</a></button>
-</header>
-<main>
     <div class="container">
-        <div class="employes">
-            <table id="employes">
-                <thead>
-                <tr>
-                    <th>nom</th>
-                    <th>prenom</th>
-                    <th>email</th>
-                    <th>fonction</th>
-                    <th>Operation</th>
-                </tr>
-                </thead>
-                <tbody>
+        <h1>Annuaire des employés Orange</h1>
+        
+        <form id="form-employe">
+            <h2>Ajouter un employé</h2>
+            <div class="form-group">
+                <label for="nom">Nom*</label>
+                <input type="text" id="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom*</label>
+                <input type="text" id="prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="poste">Poste/Fonction*</label>
+                <input type="text" id="poste" required>
+            </div>
+            <button type="submit">Ajouter</button>
+        </form>
 
-                </tbody>
-            </table>
+        <div id="liste-employes">
+            <h2>Liste des employés</h2>
+            <div class="table-container">
+                <table id="employes-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Poste</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employes-body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
-</main>
-<footer>
 
-</footer>
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
