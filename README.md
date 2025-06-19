@@ -15,8 +15,8 @@ Application web front-end pour gérer un annuaire interne des employés d'un ser
 ## Technologies
 
 - HTML5
-- CSS3 (vanilla)
-- JavaScript (ES6) sans frameworks
+- CSS3 
+- JavaScript 
 
 ## Structure
 

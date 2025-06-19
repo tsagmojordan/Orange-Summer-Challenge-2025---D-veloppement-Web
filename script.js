@@ -1,12 +1,22 @@
 class AnnuaireEmployes {
     constructor() {
         this.employes = JSON.parse(localStorage.getItem('employes')) || [];
-        this.form = document.getElementById('form-employe');
-        this.init();
+        
+        if (document.getElementById('form-employe')) {
+            this.initFormulaire();
+        }
+        
+        if (document.getElementById('employes-body')) {
+            this.initListe();
+        }
     }
 
-    init() {
+    initFormulaire() {
+        this.form = document.getElementById('form-employe');
         this.form.addEventListener('submit', (e) => this.ajouterEmploye(e));
+    }
+
+    initListe() {
         this.afficherEmployes();
     }
 
@@ -23,7 +33,7 @@ class AnnuaireEmployes {
         const employe = { nom, prenom, email, poste };
         this.employes.push(employe);
         this.sauvegarder();
-        this.afficherEmployes();
+        alert('Employé ajouté avec succès');
         this.form.reset();
     }
 
@@ -51,6 +61,8 @@ class AnnuaireEmployes {
 
     afficherEmployes() {
         const tbody = document.getElementById('employes-body');
+        if (!tbody) return;
+        
         tbody.innerHTML = this.employes
             .map((emp, index) => `
                 <tr>
